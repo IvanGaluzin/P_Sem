@@ -5,3 +5,17 @@
 # количество монет, которые нужно перевернуть.
 # 5 -> 1 0 1 1 0
 # 2
+
+n = int(input("Введите количество монет: "))
+count_zero = 0
+count_one = 0
+for i in range(n):
+    x = int(input("1 решка 0 герб: "))
+    if x == 0:
+        count_zero += 1
+    else:
+        count_one += 1
+if count_one > count_zero:
+    print(count_zero)
+else:
+    print(count_one)
