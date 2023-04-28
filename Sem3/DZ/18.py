@@ -6,3 +6,18 @@
 # содержит число X
 # 5
 # 1 2 3 4 5 6 -> 5
+
+n = int(input("Введите длину масива: "))
+list_1 = list()
+for i in range(n):
+    k = int (input())
+    list_1.append(k)
+
+x = int(input("Введите число для поиска: "))
+m = abs(x - list_1[0])
+number = list_1[0]
+for i in range(1, len(list_1)):
+    if m > abs(list_1[i] - x):
+        m = abs(list_1[i] - x)
+        number = list_1[i]
+print(number)

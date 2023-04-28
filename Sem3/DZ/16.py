@@ -5,3 +5,16 @@
 # . Последняя строка содержит число X
 # 5
 # 1 2 3 4 5 3 -> 1
+
+n = int(input("Введите длину масива: "))
+list_1 = list()
+for i in range(n):
+    k = int (input())
+    list_1.append(k)
+
+count = 0
+x = int(input("Введите число для поиска: "))
+for i in list_1:
+    if i == x:
+        count += 1
+print(list_1.count(x))
