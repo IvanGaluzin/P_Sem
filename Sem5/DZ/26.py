@@ -3,8 +3,14 @@
 def fact(a):
     if a == 1:
         return 1
+    return a * fact(a-1)
+
+def factT(a):
+    if a == 1:
+        return 1
     return fact(a - 1) + a
     
 
 a = int(input())
-print(fact(a))
+print(f"факториал {fact(a)}")
+print(f"треугольное число {factT(a)}")
