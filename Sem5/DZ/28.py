@@ -5,12 +5,11 @@
 # 2 2
 # 4
 
-def my_power(a,b):
-    if b ==0:
-        return 1
-    else:
-        return a* my_power(a,b-1)
+def f(a,b):
+    if b == 0:
+        return 1 
+    return f(a, b - 1) * a
 
-a= int(input())
-b= int(input())
-print(my_power(a,b))
+a = int(input())
+b = int(input())
+print(f(a,b))
