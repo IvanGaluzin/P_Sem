@@ -12,21 +12,21 @@ def input_records(file_name: str):
                 record_id = line.split(';', 1)[0]
         print('Enter FCS thru space')
         line = f'{int(record_id) + 1};' + ';'.join(input().split()[:4]) + ';\n'
-        confirm = confirmation('add record')
+        confirm = confirmation('добавить запись')
         if confirm == 'y':
             data.write(line)
 
 def find_char():
-    print('Choose char: ')
-    print('0 - id, 1 - second name, 2 - name, 3 - third name, 4 - number, q - quit')
+    print('Выбрать символ: ')
+    print('0 - идентификатор, 1 - второе имя, 2 - имя, 3 - третье имя, 4 - номер, q - выход')
     char = input()
     while char not in ('0', '1', '2', '3', '4', 'q'):
-        print('Data incorrect')
-        print('Choose char: ')
-        print('0 - id, 1 - second name, 2 - first name, 3 - third name, 4 - number, q - quit')
+        print('Неверные данные')
+        print('Выбрать символ: ')
+        print('0 - идентификатор, 1 - второе имя, 2 - имя, 3 - третье имя, 4 - номер, q - выход')
         char = input()
     if char != 'q':
-        inp = input('inter value\n')
+        inp = input('Введите значение\n')
         return char, inp
     else:
         return 'q', 'q'
@@ -40,29 +40,29 @@ def find_records(file_name: str, char, condition):
                     print(*line.split(';'))
                     printed = True
         if not printed:
-            print("Nothing found")
+            print("Ничего не найдено")
         return printed
 
 def check_id_record(file_name: str, text: str):
-    decision = input(f'D u know id? {text}? 1 - yes, 2 - no, q - quit\n')
+    decision = input(f'Подтвердить {text} запись: y - да, n - нет\n')
     while decision not in ('1', 'q'):
         if decision != '2':
-            print('Data incorrect')
+            print('Неверные данные')
         else:
             find_records(path, *find_char())
-        decision = input(f'D u know id? {text}? 1 - yes, 2 - no, q - quit\n')
+        decision = input(f'Подтвердить {text} запись: y - да, n - нет\n')
     if decision == '1':
         record_id = input('enter id, q - quit\n')
         while not find_records(file_name, '0', record_id) and record_id != 'q':
-            record_id = input('enter id, q - quit\n')
+            record_id = input('Введите ИД, q - Выход\n')
         return record_id
     return decision
 
 def confirmation(text: str):
-    confirm = input(f"Confirm {text} record: y - yes, n - no\n")
+    confirm = input(f"Подтвердить {text} запись: y - да, n - нет\n")
     while confirm not in ('y', 'n'):
         print('Data incorrect')
-        confirm = input(f"Confirm {text} record: y - yes, n - no\n")
+        confirm = input(f"Подтвердить {text} запись: y - да, n - нет\n")
     return confirm
 
 def replace_record_line(file_name: str, record_id, replaced_line: str):
@@ -76,16 +76,16 @@ def replace_record_line(file_name: str, record_id, replaced_line: str):
         data.write(replaced)
 
 def change_records(file_name: str):
-    record_id = check_id_record(file_name, 'change')
+    record_id = check_id_record(file_name, 'изменить')
     if record_id != 'q':
         replaced_line = f'{int(record_id)};' + ';'.join(
             input('Enter FCS thru space\n').split()[:4]) + ';\n'
-        confirm = confirmation('change')
+        confirm = confirmation('изменить')
         if confirm == 'y':
             replace_record_line(file_name, record_id, replaced_line)
 
 def delete_records(file_name: str):
-    record_id = check_id_record(file_name, 'delete')
+    record_id = check_id_record(file_name, 'Удалить')
     if record_id != 'q':
         confirm = confirmation('change')
         if confirm == 'y':

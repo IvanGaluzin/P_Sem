@@ -5,22 +5,22 @@ path = "phone_book.txt"
 
 start()
 
-actions = {"1": "list",
-           "2": "record",
-           "3": "search",
-           "4": "change",
-           "5": "delete",
-           "q": "quit"}
+actions = {"1": "список",
+           "2": "запись",
+           "3": "поиск",
+           "4": "изменить",
+           "5": "удалить",
+           "q": "выйти"}
 action = None
 
 while action != "q":
-    print("\n What should i do?", *[f"{i} - {actions[i]}" for i in actions])
+    print("\n Что делать", *[f"{i} - {actions[i]}" for i in actions])
     action = input()
     while action not in actions:
-        print("\n What should i do?", *[f"{i} - {actions[i]}" for i in actions])
+        print("\n Что делать", *[f"{i} - {actions[i]}" for i in actions])
         action = input()
         if action not in actions:
-            print("Data incorrect")
+            print("Неверные данные")
     if action != "q":
         if action == "1":
             print_records(path)
